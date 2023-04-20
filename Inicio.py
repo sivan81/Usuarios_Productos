@@ -71,16 +71,18 @@ class Inicio:
                 print("Nuevo usuario registrado.")
 
             if opcion == "2":
-                nombre=input("¿Cuál es su nombre?: ")
+                apellido=input("¿Cuál es su apellido?: ")
                 password=input("¿Cuál es su password?: ")
-                usuario=Usuario.buscar_usuario(nombre, password)
+                usuario=Usuario.buscar_usuario(apellido, password)
                 if usuario:
                     print(f"ID: {usuario.get_id_usuario()}")
                     print(f"Nombre: {usuario.get_nombre()}")
                     print(f"Apellido: {usuario.get_apellido()}")
                     print(f"Password: {usuario.get_password()}")
+                    print(f"Hola: {usuario.get_nombre()}")
                 else:
                     print("Usuario no encontrado")
+                
 
     
 Inicio.menu()

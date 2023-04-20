@@ -61,10 +61,10 @@ class Usuario:
 
     # Buscar Usuarios
 
-    def buscar_usuario(nombre, password):
+    def buscar_usuario(apellido, password):
         db = Usuario.conectar()
         cursor = db.cursor()
-        cursor.execute(f"SELECT * FROM Usuario WHERE nombre='{nombre}' AND password='{password}'")
+        cursor.execute(f"SELECT * FROM Usuario WHERE apellido='{apellido}' AND password='{password}'")
         result = cursor.fetchone()
         db.close()
         if result:
