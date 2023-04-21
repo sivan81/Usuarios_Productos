@@ -59,7 +59,7 @@ class Inicio:
     
     def menu():
         Inicio.crear_tabla()
-        while True:
+        while True: # Registro o Inicio de sesión.
             print("1. Registrarse.")
             print("2. Iniciar Sesión.")
             print("3. Salir.")
@@ -76,10 +76,10 @@ class Inicio:
                 apellido=input("¿Cuál es su apellido?: ")
                 password=input("¿Cuál es su password?: ")
                 usuario=Usuario.buscar_usuario(apellido, password)
-                if usuario:
+                if usuario: #Si es Administrador o cliente.
                     print(f"Hola: {usuario.get_nombre()}")
                     if usuario.get_id_usuario()==1:
-                        while True:
+                        while True: 
                             print("Eres el usuario Administrador, ¿Qué desea realizar?")
                             print("1. Crear productos.")
                             print("2. Modificar producto.")
@@ -90,22 +90,54 @@ class Inicio:
                             print("7. Salir.")
                             opcion=input("Seleccione una opción: ")
 
-                            if opcion=="1":
+                            if opcion=="1": # Buscar producto
                                 nombre=input("¿Cuál es el nombre del producto?: ")
                                 precio=input("¿Cuál es el precio del producto?: ")
                                 Producto.agregar_producto(nombre,precio)
                                 print("Nuevo producto agregado.")
                             
-                            if opcion=="7":
+                            elif opcion == "2": # Modificar producto
+                                id_producto=input("Indice que ID del producto que quiere modificar: ")
+                                producto=Producto.buscar_producto(id_producto)
+                                if producto:
+                                    print(f"Producto encontrado: {producto.get_nombre()} - {producto.get_precio()} €")
+                                    db = Inicio.conectar()
+                                    cursor = db.cursor()
+                                    opcion = input("¿Desea modificar el nombre del producto? (S/N)")
+                                    if opcion.upper() == "S": # Modificar nombre
+                                        nuevo_nombre = input("Introduce el nuevo nombre: ")
+                                        cursor.execute(f"UPDATE Producto SET nombre='{nuevo_nombre}' WHERE id_producto='{id_producto}'")
+                                        db.commit()
+                                        producto.set_nombre(nuevo_nombre)
+
+                                    opcion = input("¿Desea modificar el precio del producto? (S/N)")
+                                    if opcion.upper() == "S": # Modificar precio
+                                        nuevo_precio = input("Introduce el nuevo precio: ")
+                                        cursor.execute(f"UPDATE Producto SET precio='{nuevo_precio}' WHERE id_producto='{id_producto}'")
+                                        db.commit()
+                                        producto.set_precio(nuevo_precio)
+                                    db.close()
+                                    print("Producto modificado correctamente.")
+                                else:
+                                    print("Producto no encontrado.")
+                            
+                            elif opcion=="7":
                                 print("Hasta luego!")
                                 break
                     else:
-                        print("¿Qué desea hacer?")
-                        print("1. Ver productos.")
-                        print("2. Comprar productos.")
-                        print("3. Modificar sus datos.")
-                        print("4. Salir.")
-                        opcion=input("Seleccione una opción: ")
+                        while True:
+                            print("¿Qué desea hacer?")
+                            print("1. Ver productos.")
+                            print("2. Comprar productos.")
+                            print("3. Modificar sus datos.")
+                            print("4. Salir.")
+                            opcion=input("Seleccione una opción: ")
+
+                            if opcion=="4":
+                                print("Hasta luego!")
+                                break
+                            else:
+                                print("Opción inválida.")
                 else:
                     print("Usuario no encontrado")
                 

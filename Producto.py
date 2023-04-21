@@ -49,3 +49,30 @@ class Producto:
         cursor.execute(f"INSERT INTO Producto (nombre, precio) VALUES ('{nombre}', '{precio}')")
         db.commit()
         db.close()
+
+
+    # Buscar Producto
+
+    def buscar_producto(id_producto):
+        db = Producto.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"SELECT * FROM Producto WHERE id_producto='{id_producto}'")
+        result = cursor.fetchone()
+        db.close()
+        if result:
+            id_producto, nombre, precio = result
+            producto = Producto(id_producto, nombre, precio)
+            return producto
+        else:
+            return None
+        
+
+    # Modificar Producto
+
+    def modificar_producto(id_producto, nombre, precio):
+        db = Producto.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"UPDATE Producto SET nombre = '{nombre}', precio = '{precio}' WHERE id_producto = '{id_producto}'")
+        db.commit()
+        db.close()
+
