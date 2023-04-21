@@ -61,6 +61,7 @@ class Inicio:
         while True:
             print("1. Registrarse.")
             print("2. Iniciar Sesión.")
+            print("3. Salir.")
             opcion=input("Seleccione una opcion: ")
 
             if opcion == "1":
@@ -70,19 +71,38 @@ class Inicio:
                 Usuario.agregar_usuario(nombre, apellido, password)
                 print("Nuevo usuario registrado.")
 
-            if opcion == "2":
+            elif opcion == "2":
                 apellido=input("¿Cuál es su apellido?: ")
                 password=input("¿Cuál es su password?: ")
                 usuario=Usuario.buscar_usuario(apellido, password)
                 if usuario:
-                    print(f"ID: {usuario.get_id_usuario()}")
-                    print(f"Nombre: {usuario.get_nombre()}")
-                    print(f"Apellido: {usuario.get_apellido()}")
-                    print(f"Password: {usuario.get_password()}")
                     print(f"Hola: {usuario.get_nombre()}")
+                    if usuario.get_id_usuario()==1:
+                        print("Eres el usuario Administrador, ¿Qué desea realizar?")
+                        print("1. Crear productos.")
+                        print("2. Modificar producto.")
+                        print("3. Eliminar Usuario.")
+                        print("4. Sacar facturación total.")
+                        print("5. Sacar la facturación por usuario.")
+                        print("6. Sacar la facturación por usuario.")
+                        print("7. Salir.")
+                        opcion=input("Seleccione una opción: ")
+                    else:
+                        print("¿Qué desea hacer?")
+                        print("1. Ver productos.")
+                        print("2. Comprar productos.")
+                        print("3. Modificar sus datos.")
+                        print("4. Salir.")
+                        opcion=input("Seleccione una opción: ")
                 else:
                     print("Usuario no encontrado")
                 
+
+            elif opcion == "3":
+                print("Hasta luego!")
+                break
+            else:
+                print("Opción inválida.")
 
     
 Inicio.menu()
