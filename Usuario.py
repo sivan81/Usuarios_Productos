@@ -73,3 +73,13 @@ class Usuario:
             return usuario
         else:
             return None
+        
+    
+    # Eliminar Usuario
+
+    def eliminar_usuario(id_usuario):
+        db = Usuario.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"DELETE FROM Usuario WHERE id_usuario='{id_usuario}'")
+        db.commit()
+        db.close()

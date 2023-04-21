@@ -121,6 +121,14 @@ class Inicio:
                                 else:
                                     print("Producto no encontrado.")
                             
+                            elif opcion == "3": # Eliminar Usuario
+                                id_usuario=input("Indique el ID del Usuario que quiere eliminar: ")
+                                if id_usuario == "1":
+                                    print("No se puede eliminar el usuario Administrador.")
+                                else:
+                                    usuario=Usuario.eliminar_usuario(id_usuario)
+                                    print("El usuario ha sido eliminado.")
+                            
                             elif opcion=="7":
                                 print("Hasta luego!")
                                 break
