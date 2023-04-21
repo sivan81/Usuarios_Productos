@@ -1,5 +1,6 @@
 import mysql.connector
 from Usuario import Usuario
+from Producto import Producto
 
 class Inicio:
     
@@ -78,15 +79,26 @@ class Inicio:
                 if usuario:
                     print(f"Hola: {usuario.get_nombre()}")
                     if usuario.get_id_usuario()==1:
-                        print("Eres el usuario Administrador, ¿Qué desea realizar?")
-                        print("1. Crear productos.")
-                        print("2. Modificar producto.")
-                        print("3. Eliminar Usuario.")
-                        print("4. Sacar facturación total.")
-                        print("5. Sacar la facturación por usuario.")
-                        print("6. Sacar la facturación por usuario.")
-                        print("7. Salir.")
-                        opcion=input("Seleccione una opción: ")
+                        while True:
+                            print("Eres el usuario Administrador, ¿Qué desea realizar?")
+                            print("1. Crear productos.")
+                            print("2. Modificar producto.")
+                            print("3. Eliminar Usuario.")
+                            print("4. Sacar facturación total.")
+                            print("5. Sacar la facturación por usuario.")
+                            print("6. Sacar la facturación por producto.")
+                            print("7. Salir.")
+                            opcion=input("Seleccione una opción: ")
+
+                            if opcion=="1":
+                                nombre=input("¿Cuál es el nombre del producto?: ")
+                                precio=input("¿Cuál es el precio del producto?: ")
+                                Producto.agregar_producto(nombre,precio)
+                                print("Nuevo producto agregado.")
+                            
+                            if opcion=="7":
+                                print("Hasta luego!")
+                                break
                     else:
                         print("¿Qué desea hacer?")
                         print("1. Ver productos.")
