@@ -76,3 +76,19 @@ class Producto:
         db.commit()
         db.close()
 
+    
+    # Mostrar Productos
+
+    def mostrar_productos():
+        db = Producto.conectar()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM Producto")
+        productos = cursor.fetchall()
+        db.close()
+
+        if productos:
+            for producto in productos:
+                print(f"ID: {producto[0]} - Nombre: {producto[1]} - Precio: {producto[2]}")
+        else:
+            print("No hay productos registrados.")
+

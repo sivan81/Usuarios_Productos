@@ -141,7 +141,14 @@ class Inicio:
                             print("4. Salir.")
                             opcion=input("Seleccione una opción: ")
 
-                            if opcion=="4":
+                            if opcion=="1":
+                                print("Estos son los productos que hay actualmente.")
+                                Producto.mostrar_productos()
+                            
+                            elif opcion=="2":
+                                opcion=input("Introduzca el ID del producto que desea comprar.")
+
+                            elif opcion=="4":
                                 print("Hasta luego!")
                                 break
                             else:
