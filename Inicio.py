@@ -1,6 +1,7 @@
 import mysql.connector
 from Usuario import Usuario
 from Producto import Producto
+from Factura import Factura
 
 class Inicio:
     
@@ -141,12 +142,21 @@ class Inicio:
                             print("4. Salir.")
                             opcion=input("Seleccione una opción: ")
 
-                            if opcion=="1":
+                            if opcion=="1": # Muestra los productos que hay al cliente.
                                 print("Estos son los productos que hay actualmente.")
                                 Producto.mostrar_productos()
                             
-                            elif opcion=="2":
-                                opcion=input("Introduzca el ID del producto que desea comprar.")
+                            elif opcion=="2": # El cliente compra un producto y se genera una compra/factura
+                                id_producto = input("Introduzca el ID del producto que desea comprar: ")
+                                producto = Producto.buscar_producto(id_producto)
+                                if producto:
+                                    nombre_usuario = usuario.get_nombre()
+                                    precio = producto.get_precio()
+                                    nombre_producto = producto.get_nombre()
+                                    factura = Factura.agregar_producto_a_factura(nombre_usuario, nombre_producto, precio)
+                                    print("Compra realizada con éxito.")
+                                else:
+                                    print("El ID producto indicado, no existe.")
 
                             elif opcion=="4":
                                 print("Hasta luego!")
