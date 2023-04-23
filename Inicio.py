@@ -115,6 +115,15 @@ class Inicio:
                                 else:
                                     usuario=Usuario.eliminar_usuario(id_usuario)
                                     print("El usuario ha sido eliminado.")
+
+                            elif opcion == "4": # Obtener la facturación total
+                                facturacion_total = Factura.obtener_facturacion_total()
+                                print(f"La facturación total de todos los productos vendidos es de: {facturacion_total}")
+                            
+                            elif opcion == "5": # Obtener la facturación total de un usuario específico
+                                nombre_usuario = input("Introduzca el nombre del cliente: ")
+                                facturacion_total = Factura.obtener_facturacion_total_por_usuario(nombre_usuario)
+                                print(f"La facturación total del cliente {nombre_usuario} es de: {facturacion_total}")
                             
                             elif opcion=="7":
                                 print("Hasta luego!")

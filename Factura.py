@@ -63,6 +63,30 @@ class Factura:
         db.commit()
         db.close()
 
-        # Crear una nueva instancia de Factura
+        # Crear una nueva instancia de Factura, quizás lo utilice para obtener la facturación de un usuario específico o un producto.
         factura = Factura(None, nombre_usuario, nombre_producto, precio)
         return factura
+    
+
+    # Facturacion Total, es decir, suma de los precios de los artículos vendidos
+
+    def obtener_facturacion_total():
+        db = Producto.conectar()
+        cursor = db.cursor()
+        cursor.execute("SELECT SUM(precio) FROM Factura")
+        resultado = cursor.fetchone()
+        db.close()
+        return resultado[0]
+    
+
+    # Obtener facturación total de un usuario específico
+
+    def obtener_facturacion_total_por_usuario(nombre_usuario):
+        db = Factura.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"SELECT SUM(precio) FROM Factura WHERE nombre_usuario='{nombre_usuario}'")
+        resultado = cursor.fetchone()
+        db.close()
+
+        # retornar la suma de precios
+        return resultado[0] if resultado[0] else 0
