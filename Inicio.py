@@ -98,27 +98,13 @@ class Inicio:
                                 print("Nuevo producto agregado.")
                             
                             elif opcion == "2": # Modificar producto
-                                id_producto=input("Indice que ID del producto que quiere modificar: ")
+                                id_producto=input("Indice que ID del producto que quiere modificar su precio: ")
                                 producto=Producto.buscar_producto(id_producto)
                                 if producto:
                                     print(f"Producto encontrado: {producto.get_nombre()} - {producto.get_precio()} €")
-                                    db = Inicio.conectar()
-                                    cursor = db.cursor()
-                                    opcion = input("¿Desea modificar el nombre del producto? (S/N)")
-                                    if opcion.upper() == "S": # Modificar nombre
-                                        nuevo_nombre = input("Introduce el nuevo nombre: ")
-                                        cursor.execute(f"UPDATE Producto SET nombre='{nuevo_nombre}' WHERE id_producto='{id_producto}'")
-                                        db.commit()
-                                        producto.set_nombre(nuevo_nombre)
-
-                                    opcion = input("¿Desea modificar el precio del producto? (S/N)")
-                                    if opcion.upper() == "S": # Modificar precio
-                                        nuevo_precio = input("Introduce el nuevo precio: ")
-                                        cursor.execute(f"UPDATE Producto SET precio='{nuevo_precio}' WHERE id_producto='{id_producto}'")
-                                        db.commit()
-                                        producto.set_precio(nuevo_precio)
-                                    db.close()
-                                    print("Producto modificado correctamente.")
+                                    nuevo_precio=input("indique el nuevo precio del producto: ")
+                                    Producto.modificar_producto(id_producto,producto.get_nombre(), nuevo_precio)
+                                    print("Precio del producto modificado correctamente.")
                                 else:
                                     print("Producto no encontrado.")
                             
@@ -157,6 +143,11 @@ class Inicio:
                                     print("Compra realizada con éxito.")
                                 else:
                                     print("El ID producto indicado, no existe.")
+                            
+                            elif opcion=="3":
+                                nuevo_password=input("Puede modificar su password si lo desea. ¿Cuál sería su nuevo password?: ")
+                                Usuario.modificar_dato(usuario.get_id_usuario(),nuevo_password)
+                                print("Su password ha sido modificado correctamente.")
 
                             elif opcion=="4":
                                 print("Hasta luego!")

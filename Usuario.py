@@ -83,3 +83,13 @@ class Usuario:
         cursor.execute(f"DELETE FROM Usuario WHERE id_usuario='{id_usuario}'")
         db.commit()
         db.close()
+
+    
+    # Modificar Datos Usuario
+
+    def modificar_dato(id_usuario, password):
+        db = Usuario.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"UPDATE Usuario SET password = '{password}' WHERE id_usuario = '{id_usuario}'")
+        db.commit()
+        db.close()
