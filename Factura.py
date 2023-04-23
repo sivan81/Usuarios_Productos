@@ -64,8 +64,8 @@ class Factura:
         db.close()
 
         # Crear una nueva instancia de Factura, quizás lo utilice para obtener la facturación de un usuario específico o un producto.
-        factura = Factura(None, nombre_usuario, nombre_producto, precio)
-        return factura
+        # factura = Factura(None, nombre_usuario, nombre_producto, precio)
+        # return factura
     
 
     # Facturacion Total, es decir, suma de los precios de los artículos vendidos
