@@ -89,4 +89,8 @@ class Factura:
         db.close()
 
         # retornar la suma de precios
-        return resultado[0] if resultado[0] else 0
+        if resultado and resultado[0]:
+            return resultado[0] if resultado[0] else 0
+        else:
+            print(f"No existe ninguna factura para el usuario {nombre_usuario}")
+            return 0

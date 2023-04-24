@@ -81,7 +81,7 @@ class Inicio:
                     print(f"Hola: {usuario.get_nombre()}")
                     if usuario.get_id_usuario()==1:
                         while True: 
-                            print("Eres el usuario Administrador, ¿Qué desea realizar?")
+                            print("Eres el usuario Administrador, ¿Qué desea realizar? \n")
                             print("1. Crear productos.")
                             print("2. Modificar producto.")
                             print("3. Eliminar Usuario.")
@@ -95,36 +95,37 @@ class Inicio:
                                 nombre=input("¿Cuál es el nombre del producto?: ")
                                 precio=input("¿Cuál es el precio del producto?: ")
                                 Producto.agregar_producto(nombre,precio)
-                                print("Nuevo producto agregado.")
+                                print("Nuevo producto agregado. \n")
                             
                             elif opcion == "2": # Modificar producto
                                 id_producto=input("Indice que ID del producto que quiere modificar su precio: ")
                                 producto=Producto.buscar_producto(id_producto)
                                 if producto:
-                                    print(f"Producto encontrado: {producto.get_nombre()} - {producto.get_precio()} €")
+                                    print(f"Producto encontrado: {producto.get_nombre()} - {producto.get_precio()} € \n")
                                     nuevo_precio=input("indique el nuevo precio del producto: ")
                                     Producto.modificar_producto(id_producto,producto.get_nombre(), nuevo_precio)
-                                    print("Precio del producto modificado correctamente.")
+                                    print("Precio del producto modificado correctamente. \n")
                                 else:
-                                    print("Producto no encontrado.")
+                                    print("Producto no encontrado. \n")
                             
                             elif opcion == "3": # Eliminar Usuario
                                 id_usuario=input("Indique el ID del Usuario que quiere eliminar: ")
                                 if id_usuario == "1":
-                                    print("No se puede eliminar el usuario Administrador.")
+                                    print("No se puede eliminar el usuario Administrador. \n")
                                 else:
                                     usuario=Usuario.eliminar_usuario(id_usuario)
-                                    print("El usuario ha sido eliminado.")
+                                    print("El usuario ha sido eliminado. \n")
 
                             elif opcion == "4": # Obtener la facturación total
                                 facturacion_total = Factura.obtener_facturacion_total()
-                                print(f"La facturación total de todos los productos vendidos es de: {facturacion_total}")
+                                print(f"La facturación total de todos los productos vendidos es de: {facturacion_total} \n")
                             
                             elif opcion == "5": # Obtener la facturación total de un usuario específico
                                 nombre_usuario = input("Introduzca el nombre del cliente: ")
                                 facturacion_total = Factura.obtener_facturacion_total_por_usuario(nombre_usuario)
-                                print(f"La facturación total del cliente {nombre_usuario} es de: {facturacion_total}")
-                            
+                                if facturacion_total > 0:
+                                    print(f"La facturación total del cliente {nombre_usuario} es de: {facturacion_total} € \n")
+
                             elif opcion=="7":
                                 print("Hasta luego!")
                                 break
@@ -138,7 +139,7 @@ class Inicio:
                             opcion=input("Seleccione una opción: ")
 
                             if opcion=="1": # Muestra los productos que hay al cliente.
-                                print("Estos son los productos que hay actualmente.")
+                                print("Estos son los productos que hay actualmente. \n")
                                 Producto.mostrar_productos()
                             
                             elif opcion=="2": # El cliente compra un producto y se genera una compra/factura
@@ -150,29 +151,29 @@ class Inicio:
                                     nombre_producto = producto.get_nombre()
                                     # factura = Factura.agregar_producto_a_factura(nombre_usuario, nombre_producto, precio)
                                     Factura.agregar_producto_a_factura(nombre_usuario, nombre_producto, precio)
-                                    print("Compra realizada con éxito.")
+                                    print("Compra realizada con éxito. \n")
                                 else:
-                                    print("El ID producto indicado, no existe.")
+                                    print("El ID producto indicado, no existe. \n")
                             
                             elif opcion=="3":
                                 nuevo_password=input("Puede modificar su password si lo desea. ¿Cuál sería su nuevo password?: ")
                                 Usuario.modificar_dato(usuario.get_id_usuario(),nuevo_password)
-                                print("Su password ha sido modificado correctamente.")
+                                print("Su password ha sido modificado correctamente. \n")
 
                             elif opcion=="4":
                                 print("Hasta luego!")
                                 break
                             else:
-                                print("Opción inválida.")
+                                print("Opción inválida. \n")
                 else:
-                    print("Usuario no encontrado")
+                    print("Usuario no encontrado. \n")
                 
 
             elif opcion == "3":
                 print("Hasta luego!")
                 break
             else:
-                print("Opción inválida.")
+                print("Opción inválida. \n")
 
     
 Inicio.menu()
