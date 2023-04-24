@@ -55,7 +55,6 @@ class Inicio:
         db.close()
 
 
-
     # Menú de preguntas al usuario
     
     def menu():
@@ -125,6 +124,12 @@ class Inicio:
                                 facturacion_total = Factura.obtener_facturacion_total_por_usuario(nombre_usuario)
                                 if facturacion_total > 0:
                                     print(f"La facturación total del cliente {nombre_usuario} es de: {facturacion_total} € \n")
+
+                            elif opcion == "6": # Obtener la facturación total de un producto específico
+                                nombre_producto = input("Introduzca el nombre del producto: ")
+                                facturacion_total = Factura.obtener_facturacion_total_por_producto(nombre_producto)
+                                if facturacion_total > 0:
+                                    print(f"La facturación total del producto {nombre_producto} es de: {facturacion_total} € \n")
 
                             elif opcion=="7":
                                 print("Hasta luego!")

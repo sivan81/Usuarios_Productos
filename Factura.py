@@ -94,3 +94,20 @@ class Factura:
         else:
             print(f"No existe ninguna factura para el usuario {nombre_usuario}")
             return 0
+        
+    
+    # Obtener facturación total de un producto específico
+
+    def obtener_facturacion_total_por_producto(nombre_producto):
+        db = Factura.conectar()
+        cursor = db.cursor()
+        cursor.execute(f"SELECT SUM(precio) FROM Factura WHERE nombre_producto='{nombre_producto}'")
+        resultado = cursor.fetchone()
+        db.close()
+
+        # retornar la suma de precios
+        if resultado and resultado[0]:
+            return resultado[0] if resultado[0] else 0
+        else:
+            print(f"No existe ninguna factura para el producto {nombre_producto}")
+            return 0
