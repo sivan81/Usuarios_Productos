@@ -154,7 +154,6 @@ class Inicio:
                                     nombre_usuario = usuario.get_nombre()
                                     precio = producto.get_precio()
                                     nombre_producto = producto.get_nombre()
-                                    # factura = Factura.agregar_producto_a_factura(nombre_usuario, nombre_producto, precio)
                                     Factura.agregar_producto_a_factura(nombre_usuario, nombre_producto, precio)
                                     print("Compra realizada con éxito. \n")
                                 else:
