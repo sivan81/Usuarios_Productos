@@ -93,3 +93,19 @@ class Usuario:
         cursor.execute(f"UPDATE Usuario SET password = '{password}' WHERE id_usuario = '{id_usuario}'")
         db.commit()
         db.close()
+
+    
+    # Mostrar Usuarios
+
+    def mostrar_usuarios():
+        db = Usuario.conectar()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM Usuario")
+        usuarios = cursor.fetchall()
+        db.close()
+
+        if usuarios:
+            for usuario in usuarios:
+                print(f"ID: {usuario[0]} - Nombre: {usuario[1]} - Apellido: {usuario[2]}")
+        else:
+            print("No hay clientes registrados.")

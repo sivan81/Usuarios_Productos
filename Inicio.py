@@ -97,6 +97,8 @@ class Inicio:
                                 print("Nuevo producto agregado. \n")
                             
                             elif opcion == "2": # Modificar producto
+                                print("Estos son los productos que hay actualmente. \n")
+                                Producto.mostrar_productos()
                                 id_producto=input("Indice que ID del producto que quiere modificar su precio: ")
                                 producto=Producto.buscar_producto(id_producto)
                                 if producto:
@@ -108,6 +110,8 @@ class Inicio:
                                     print("Producto no encontrado. \n")
                             
                             elif opcion == "3": # Eliminar Usuario
+                                print("Estos son los clientes que hay actualmente. \n")
+                                Usuario.mostrar_usuarios()
                                 id_usuario=input("Indique el ID del Usuario que quiere eliminar: ")
                                 if id_usuario == "1":
                                     print("No se puede eliminar el usuario Administrador. \n")
@@ -117,7 +121,7 @@ class Inicio:
 
                             elif opcion == "4": # Obtener la facturación total
                                 facturacion_total = Factura.obtener_facturacion_total()
-                                print(f"La facturación total de todos los productos vendidos es de: {facturacion_total} \n")
+                                print(f"La facturación total de todos los productos vendidos es de: {facturacion_total} € \n")
                             
                             elif opcion == "5": # Obtener la facturación total de un usuario específico
                                 nombre_usuario = input("Introduzca el nombre del cliente: ")
