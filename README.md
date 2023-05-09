@@ -9,7 +9,7 @@ El objetivo del programa es crear una base de datos llamada "taream6ivan" de for
 
 Al ejecutar el programa, también se crea automáticamente un administrador que tiene acceso a funciones adicionales en comparación con un cliente registrado o un usuario que inicia sesión.
 
-El administrador puede realizar las siguientes acciones:
+# El administrador puede realizar las siguientes acciones:
 
 - Crear productos.
 - Eliminar clientes.
@@ -17,15 +17,15 @@ El administrador puede realizar las siguientes acciones:
 - Obtener facturación total.
 - Obtener facturación por producto.
 
-El cliente puede realizar las siguientes acciones:
+# El cliente puede realizar las siguientes acciones:
 
 - Ver productos.
 - Comprar productos.
 - Modificar sus datos personales.
 
-Todos los datos están almacenados y gestionados mediante SQL.
+# Todos los datos están almacenados y gestionados mediante SQL.
 
-Los archivos .py que conforman esta tarea son:
+# Los archivos .py que conforman esta tarea son:
 
 - Inicio.py
 - Factura.py
@@ -33,3 +33,8 @@ Los archivos .py que conforman esta tarea son:
 - Usuario.py
 
 Si lo deseas, puedes editar estos archivos para lograr diferentes objetivos u opciones, aunque el programa fue desarrollado de acuerdo a los requisitos de la tarea en ese momento.
+
+## Repositorio de solo lectura
+
+Este repositorio es de solo lectura. No se aceptarán modificaciones directas en el repositorio original. Si deseas contribuir con mejoras o correcciones, por favor, crea una bifurcación (fork) del repositorio y trabaja en tu propia copia. Luego, puedes enviar una solicitud de extracción (pull request) para que se revisen tus cambios. Agradecemos tu interés en el proyecto y tus posibles contribuciones.
+
