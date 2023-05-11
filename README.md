@@ -1,4 +1,4 @@
-# Usuarios_Productos
+# Usuarios_Productos_SQL
 Gestión de productos, ventas y registro de usuarios en LocalHost. Tarea del módulo 6 final ciclo
 
 ### Tarea Módulo 6 - Administrador de Tienda Online
